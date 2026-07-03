@@ -9,5 +9,5 @@ This repository automatically provisions your package managers (`scoop`, `winget
 Open a standard PowerShell terminal and execute this single command:
 
 ```powershell
-winget install twpayne.chezmoi; chezmoi init --apply chezmoi init --apply LiteBluSky
+winget install twpayne.chezmoi; chezmoi init --apply LiteBluSky
 ```
