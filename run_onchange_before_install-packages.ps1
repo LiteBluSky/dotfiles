@@ -22,8 +22,18 @@ $wingetPkgs = @(
     "JesseDuffield.lazygit",
     "Microsoft.PowerShell"
 )
+
 foreach ($pkg in $wingetPkgs) {
-    winget upgrade --id $pkg --silent --accept-source-agreements --accept-package-agreements --install-if-not-found
+    # Check if the package is already on the machine
+    $isInstalled = winget list --id $pkg -e 2>$null
+    
+    if ($isInstalled) {
+        Write-Host "$pkg is already installed. Checking for updates..." -ForegroundColor Cyan
+        winget upgrade --id $pkg --silent --accept-source-agreements --accept-package-agreements
+    } else {
+        Write-Host "$pkg not found. Installing fresh..." -ForegroundColor Yellow
+        winget install --id $pkg --silent --accept-source-agreements --accept-package-agreements
+    }
 }
 
 # 3. Install Scoop Apps & Dependencies from README
