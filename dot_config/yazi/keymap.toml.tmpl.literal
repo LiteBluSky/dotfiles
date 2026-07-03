@@ -1,0 +1,51 @@
+[[mgr.prepend_keymap]]
+on = [ "g", "p" ]
+run = "cd ~/Projects"
+desc = "Go to ~/Projects"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "a" ]
+run = "cd ~/AppData"
+desc = "Go to ~/AppData"
+
+[[mgr.prepend_keymap]]
+on   = [ "t", "p" ]
+run  = 'shell "wezterm cli spawn --cwd ."'
+desc = "Open WezTerm new pane (p)"
+
+[[mgr.prepend_keymap]]
+on   = [ "t", "b" ]
+block = true
+run  = 'shell "wezterm cli split-pane --bottom --cwd ."'
+desc = "Open WezTerm bottom (b)"
+
+[[mgr.prepend_keymap]]
+on   = [ "t", "r" ]
+block = true
+run  = 'shell "wezterm cli split-pane --right --cwd ."'
+desc = "Open WezTerm right (r)"
+
+[[mgr.prepend_keymap]]
+on   = [ "t", "l" ]
+block = true
+run  = 'shell "wezterm cli split-pane --left --cwd ."'
+desc = "Open WezTerm left (r)"
+
+[[mgr.prepend_keymap]]
+on = [ "t", "t" ]
+run = 'shell tuxedo --block'
+desc = "Open todo.txt (tuxedo)"
+
+[[mgr.prepend_keymap]]
+on = [ "c", "y" ]
+run = [
+    '''shell "powershell -NoProfile -Command \"Set-Clipboard -Path (Get-Item '%*')\""''',
+    "yank"
+]
+desc = "Yank files and copy to Windows clipboard"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "t" ]
+run  = "shell 'lazygit' --block"
+desc = "Open Lazygit"
+

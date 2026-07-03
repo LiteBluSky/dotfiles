@@ -1,0 +1,38 @@
+[opener]
+edit = [
+    { run = 'nvim', block = true, desc = "Open in Neovim (Block)" },
+    { run = 'nvim "%1"', block = true, desc = "Neovim on current (Block)" },
+    { run = 'code .', desc = "Open in VS Code" },
+    { run = 'tuxedo', block = true, desc = "Open todo.txt (tuxedo)" },
+]
+
+[open]
+rules = [
+    # Rule for directories (folders)
+    { mime = "inode/directory", use = [ "edit", "open" ] },
+    # Rule for text files
+    { mime = "text/*", use = [ "edit", "open" ] },
+    # Fallback for everything else
+    { mime = "*", use = [ "open", "edit" ] },
+]
+
+[mgr]
+ratio = [2, 2, 4]
+# sort_by = "alphabetical"
+# sort_sensitive = false
+# sort_reverse = false
+# sort_dir_first = false
+# linemode = "none"
+# show_hidden = true
+# show_symlink = true
+# scrolloff = 5
+
+[preview]
+tab_size = 2
+max_width = 600
+max_height = 900
+cache_dir = ""
+image_filter = "triangle"
+image_quality = 75
+ueberzug_scale = 1
+ueberzug_offset = [0, 0, 0, 0]

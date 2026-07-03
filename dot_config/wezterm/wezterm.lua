@@ -1,0 +1,158 @@
+local wezterm = require("wezterm")
+local config = wezterm.config_builder()
+
+local has_secrets, secrets = pcall(require, "secrets")
+if has_secrets and secrets.ssh_domains then
+	config.ssh_domains = secrets.ssh_domains
+else
+	config.ssh_domains = {}
+end
+
+-- Import Catppuccin theme (Mocha)
+function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Catppuccin Frappe"
+	else
+		return "Catppuccin Frappe"
+	end
+end
+
+config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+
+wezterm.on("window-focus-changed", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.allow_win32_input_mode then
+		window:maximize()
+		overrides.allow_win32_input_mode = true
+		window:set_config_overrides(overrides)
+	end
+end)
+
+config.harfbuzz_features = { "calt=1", "cli=1", "lig=1", "ss01=1" }
+
+-- Font
+config.font = wezterm.font_with_fallback({
+	"Cascadia Mono",
+	"CaskaydiaCove Nerd Font Mono",
+})
+config.font_size = 9.5
+
+-- Window look
+config.window_background_opacity = 0.96
+config.window_padding = { left = 10, right = 10, top = 10, bottom = 10 }
+config.window_decorations = "RESIZE"
+config.hide_tab_bar_if_only_one_tab = true
+config.use_fancy_tab_bar = true
+
+config.default_prog = { "C:/Program Files/PowerShell/7/pwsh.exe" }
+config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
+
+config.keys = {
+
+	{ key = " ", mods = "LEADER|CTRL", action = wezterm.action.SendKey({ key = " ", mods = "CTRL" }) },
+	{
+		key = "w",
+		mods = "CTRL",
+		action = wezterm.action.CloseCurrentPane({ confirm = false }),
+	},
+	{
+		key = "d",
+		mods = "LEADER",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "f",
+		mods = "LEADER",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{ key = " ", mods = "LEADER", action = wezterm.action.SendKey({ key = " ", mods = "CTRL" }) },
+	{
+		key = "p",
+		mods = "LEADER",
+		action = wezterm.action.ActivatePaneDirection("Prev"),
+	},
+	{
+		key = "n",
+		mods = "LEADER",
+		action = wezterm.action.ActivatePaneDirection("Next"),
+	},
+	{
+		key = "e",
+		mods = "LEADER",
+		action = wezterm.action.Multiple({
+			wezterm.action.SendString("nvim"),
+			wezterm.action.SendKey({ key = "Enter" }),
+		}),
+	},
+	{
+		key = "g",
+		mods = "LEADER",
+		action = wezterm.action.Multiple({
+			wezterm.action.SendString("lazygit"),
+			wezterm.action.SendKey({ key = "Enter" }),
+		}),
+	},
+	{
+		key = "y",
+		mods = "LEADER",
+		action = wezterm.action.Multiple({
+			wezterm.action.SendString("y"),
+			wezterm.action.SendKey({ key = "Enter" }),
+		}),
+	},
+	{
+		key = "t",
+		mods = "LEADER",
+		action = wezterm.action.Multiple({
+			wezterm.action.SendString("tuxedo"),
+			wezterm.action.SendKey({ key = "Enter" }),
+		}),
+	},
+	{
+		key = "m",
+		mods = "LEADER",
+		action = wezterm.action.PaneSelect({ mode = "SwapWithActive" }),
+	},
+	{
+		key = "h",
+		mods = "LEADER",
+		action = wezterm.action.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "l",
+		mods = "LEADER",
+		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "k",
+		mods = "LEADER",
+		action = wezterm.action.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "j",
+		mods = "LEADER",
+		action = wezterm.action.ActivatePaneDirection("Down"),
+	},
+	{
+		key = "0",
+		mods = "LEADER",
+		action = wezterm.action.PaneSelect,
+	},
+	{
+		key = "h",
+		mods = "ALT",
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
+	{
+		key = "l",
+		mods = "ALT",
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+	{
+		key = "p",
+		mods = "ALT",
+		action = wezterm.action.ShowTabNavigator,
+	},
+}
+
+return config
