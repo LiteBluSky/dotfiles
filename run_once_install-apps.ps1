@@ -6,7 +6,7 @@ if (Get-Command winget -ErrorAction SilentlyContinue) {
     
     # Install Zen Browser if it isn't already installed
     Write-Host "Installing Zen Browser via WinGet..."
-    winget install -e --id ZenBrowser.ZenBrowser --accept-source-agreements --accept-package-agreements
+    winget install -e --id Zen-Team.Zen-Browser --accept-source-agreements --accept-package-agreements
 
     # You can stack other apps here too!
     # winget install -e --id JanDeDobbeleer.OhMyPosh
