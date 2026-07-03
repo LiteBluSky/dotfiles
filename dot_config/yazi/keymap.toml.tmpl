@@ -49,7 +49,7 @@ on   = [ "g", "t" ]
 run  = "shell 'lazygit' --block"
 desc = "Open Lazygit"
 
-{{ if eq .profile "work" }}
+{{ if and (hasKey . "profile") (eq .profile "work") }}
 [[mgr.prepend_keymap]]
 on   = [ "g", "k" ]
 run  = "cd ~/KALFRISA"
