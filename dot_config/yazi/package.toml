@@ -1,5 +1,7 @@
-[plugin]
-deps = []
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "159eaba"
+hash = "799a47be8755dc0329e6de68a508facc"
 
 [flavor]
 deps = []
