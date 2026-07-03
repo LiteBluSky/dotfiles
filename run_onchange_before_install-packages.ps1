@@ -43,9 +43,15 @@ scoop bucket add extras 2>$null
 scoop install yazi tuxedo ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 scoop install vcredist2022
 
-# 4. Install PowerShell Profile Module Dependency
+# 4. Install Terminal-Icons
 Write-Host "Installing Terminal-Icons..." -ForegroundColor Cyan
-Install-Module -Name Terminal-Icons -Repository PSGallery -Force -AllowClobber -Scope CurrentUser
+# Check if the module exists before blindly attempting to force install it
+if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
+    Install-Module -Name Terminal-Icons -Repository PSGallery -Force -Scope CurrentUser
+} else {
+    Write-Host "Terminal-Icons already installed." -ForegroundColor DarkGray
+}
+
 
 # 5. Handle Required Environment Variables Natively
 
