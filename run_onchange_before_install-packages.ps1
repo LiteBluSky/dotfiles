@@ -23,7 +23,7 @@ $wingetPkgs = @(
     "Microsoft.PowerShell"
 )
 foreach ($pkg in $wingetPkgs) {
-    winget install --id $pkg --silent --accept-source-agreements --accept-package-agreements --upgrade
+    winget upgrade --id $pkg --silent --accept-source-agreements --accept-package-agreements --install-if-not-found
 }
 
 # 3. Install Scoop Apps & Dependencies from README
