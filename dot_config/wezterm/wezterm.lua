@@ -38,6 +38,7 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 9.5
 
 -- Window look
+config.front_end = "WebGpu"
 config.window_background_opacity = 0.96
 config.window_padding = { left = 10, right = 10, top = 10, bottom = 10 }
 config.window_decorations = "RESIZE"
