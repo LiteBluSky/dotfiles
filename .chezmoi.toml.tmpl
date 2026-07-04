@@ -1,0 +1,35 @@
+[data]
+    profile = "home"
+
+    [data.packages]
+        # Core Shell & Terminal Architecture
+        nushell         = { windows = "nushell",        linux = "nushell" }
+        wezterm         = { windows = "wezterm",        linux = "wezterm" }
+        starship        = { windows = "starship",       linux = "starship" }
+        fastfetch       = { windows = "fastfetch",      linux = "fastfetch" }
+        lazygit         = { windows = "lazygit",        linux = "lazygit" }
+
+        # Main CLI Utilities
+        yazi            = { windows = "yazi",           linux = "yazi" }
+        tuxedo          = { windows = "tuxedo",         linux = "tuxedo" }
+        ffmpeg          = { windows = "ffmpeg",         linux = "ffmpeg" }
+        jq              = { windows = "jq",             linux = "jq" }
+        fd              = { windows = "fd",             linux = "fd-find" }
+        ripgrep         = { windows = "ripgrep",        linux = "ripgrep" }
+        fzf             = { windows = "fzf",            linux = "fzf" }
+        zoxide          = { windows = "zoxide",         linux = "zoxide" }
+
+        # Heavy System Dependencies & Core Libraries
+        sevenzip        = { windows = "7zip",           linux = "p7zip-full" }
+        poppler         = { windows = "poppler",        linux = "poppler-utils" }
+        resvg           = { windows = "resvg",          linux = "resvg" }
+        imagemagick     = { windows = "imagemagick",    linux = "imagemagick" }
+
+        # Windows-Only Runtimes (Mapped to pass safely or skip on Linux targets)
+        vcredist2022    = { windows = "vcredist2022",   linux = "" }
+
+        # Custom Shell Extensions
+        terminal_icons  = { windows = "terminal-icons", linux = "" }
+
+        # Utilities and Apps
+        zen             = { windows = "zen-browser",    linux = "zen" }
