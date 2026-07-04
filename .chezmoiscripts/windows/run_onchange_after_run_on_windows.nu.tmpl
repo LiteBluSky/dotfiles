@@ -16,8 +16,8 @@ let scoop_pkgs = [
 
 # 3. Clean Loop Execution
 for pkg in $scoop_pkgs {
-    # Using 'get -i stdout' cleanly extracts the text stream from the pipeline object
-    if (do { ^scoop info $pkg } | complete | get -i stdout | default "" | str contains "Installed: version") {
+    # Changed 'get -i' to 'get -o' to match modern Nushell syntax
+    if (do { ^scoop info $pkg } | complete | get -o stdout | default "" | str contains "Installed: version") {
         print $"(ansi dark_gray)($pkg) is up to date.(ansi reset)"
     } else {
         print $"(ansi yellow)Installing ($pkg) via Scoop...(ansi reset)"
