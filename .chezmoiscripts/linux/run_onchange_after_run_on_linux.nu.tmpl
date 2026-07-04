@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "linux" -}}
 # Generated dynamically by Chezmoi for Linux
 print -e $"(ansi green)=== Running Linux Apt Package Layer ===(ansi reset)"
 
@@ -15,3 +16,4 @@ for pkg in $linux_pkgs {
     print $"(ansi yellow)Syncing ($pkg) via system package manager...(ansi reset)"
     sudo apt-get install -y $pkg
 }
+{{ end -}}
