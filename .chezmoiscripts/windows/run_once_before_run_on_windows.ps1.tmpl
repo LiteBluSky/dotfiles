@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "windows" -}}
 # 1. Check if Scoop is installed, install if missing
 if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
     Write-Host "=== Bootstrapping: Installing Scoop ===" -ForegroundColor Cyan
@@ -11,3 +12,4 @@ if (-not (Get-Command nu -ErrorAction SilentlyContinue)) {
     scoop install shortcut  # Helpful dependency for scoop links
     scoop install nushell
 }
+{{ end -}}
