@@ -1,0 +1,17 @@
+# Generated dynamically by Chezmoi for Linux
+print -e $"(ansi green)=== Running Linux Apt Package Layer ===(ansi reset)"
+
+# Extract active Linux package handles from template data
+let linux_pkgs = [
+    {{- range .packages }}
+    {{- if ne .linux "" }}
+    "{{ .linux }}",
+    {{- end }}
+    {{- end }}
+]
+
+# Execute standard apt automation
+for pkg in $linux_pkgs {
+    print $"(ansi yellow)Syncing ($pkg) via system package manager...(ansi reset)"
+    sudo apt-get install -y $pkg
+}
