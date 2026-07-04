@@ -47,7 +47,9 @@ config.use_fancy_tab_bar = true
 
 {{ if eq .chezmoi.os "windows" }}
 -- Windows (Scoop Path)
-config.default_prog = { home .. "/scoop/apps/nushell/current/nu.exe" }
+config.default_prog = {
+	"C:/Users/rbuck/scoop/shims/nu.exe",
+}
 {{ else }}
 -- Linux / macOS (System Path)
 config.default_prog = { "/usr/bin/nu" }
