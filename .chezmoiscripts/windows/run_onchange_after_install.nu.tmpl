@@ -1,0 +1,24 @@
+# Generated dynamically by Chezmoi for Windows
+print -e $"(ansi green)=== Running Scoop Installer Layer ===(ansi reset)"
+
+# 1. Initialize Required Buckets Safely
+do { ^scoop bucket add extras } | complete
+
+# 2. Extract Windows Packages from Master Data Template
+let scoop_pkgs = [
+    {{- range .packages }}
+    {{- if ne .windows "" }}
+    "{{ .windows }}",
+    {{- end }}
+    {{- end }}
+]
+
+# 3. Clean Loop Execution
+for pkg in $scoop_pkgs {
+    if (do { ^scoop info $pkg } | complete | $.stdout? | default "" | str contains "Installed: version") {
+        print $"(ansi dark_gray)($pkg) is up to date.(ansi reset)"
+    } else {
+        print $"(ansi yellow)Installing ($pkg) via Scoop...(ansi reset)"
+        ^scoop install $pkg
+    }
+}

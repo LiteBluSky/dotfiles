@@ -8,3 +8,5 @@ show_line_num = true
 show_status_bar = true
 show_done = false
 show_future = false
+share_token = 1aa42a37d7b4ccb1c6d62116d4f0cededcb185e3bcd3ed8c8f2e47f36c5fa796
+share_port = 64522

@@ -45,7 +45,14 @@ config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 
-config.default_prog = { "C:/Program Files/PowerShell/7/pwsh.exe" }
+{{ if eq .chezmoi.os "windows" }}
+-- Windows (Scoop Path)
+config.default_prog = { home .. "/scoop/apps/nushell/current/nu.exe" }
+{{ else }}
+-- Linux / macOS (System Path)
+config.default_prog = { "/usr/bin/nu" }
+{{ end }}
+
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 
 config.keys = {
