@@ -23,8 +23,7 @@ $python\
 $conda\
 [](fg:overlay1 bg:overlay0)\
 $time\
-$line_break\
-$character\
+\n
 """
 
 palette = 'catppuccin_frappe'
