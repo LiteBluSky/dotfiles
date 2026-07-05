@@ -23,6 +23,7 @@ $python\
 $conda\
 [](fg:overlay1 bg:overlay0)\
 $time\
+$line_break\
 $character\
 """
 
@@ -135,7 +136,7 @@ style = "bg:overlay0"
 format = "[  $time ](fg:text bg:overlay0 $style)[](fg:overlay0)"
 
 [line_break]
-disabled = true
+disabled = false
 
 # [character]
 # disabled = false
