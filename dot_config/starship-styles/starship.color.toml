@@ -23,9 +23,7 @@ $python\
 $conda\
 [](fg:sapphire bg:lavender)\
 $time\
- [](fg:lavender bg:surface2)\
-$character\
-[ ](fg:surface2)\
+\n
 """
 
 palette = 'catppuccin_frappe'
@@ -143,10 +141,10 @@ ignore_base = false
 disabled = false
 time_format = "%R"
 style = "bg:lavender"
-format = '[[  $time ](fg:crust bg:lavender)]($style)'
+format = '[  $time ](fg:crust bg:lavender $style)[](fg:lavender)'
 
 [line_break]
-disabled = true
+disabled = false
 
 # [character]
 # disabled = false
@@ -158,7 +156,7 @@ disabled = true
 # vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
 [character]
-disabled = false
+disabled = true
 # This format string removes any trailing spaces
 format = '$symbol' 
 
