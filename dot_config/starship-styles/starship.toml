@@ -132,7 +132,7 @@ ignore_base = false
 disabled = false
 time_format = "%R"
 style = "bg:overlay0"
-format = '[[  $time ](fg:text bg:overlay0)]($style)'
+format = "[  $time ](fg:text bg:overlay0 $style)[](fg:overlay0)"
 
 [line_break]
 disabled = true
@@ -147,7 +147,7 @@ disabled = true
 # vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
 [character]
-disabled = false
+disabled = true
 # This format string removes any trailing spaces
 format = '$symbol' 
 
