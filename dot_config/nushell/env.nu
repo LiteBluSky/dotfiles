@@ -17,9 +17,10 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
-$env.YAZI_CONFIG_HOME = ($env.USERPROFILE | path join ".config" "yazi")
-$env.XDG_CONFIG_HOME = ($env.USERPROFILE | path join ".config")
 $env.EDITOR = "nvim"
+$env.XDG_CONFIG_HOME = ($env.USERPROFILE | path join ".config")
+$env.YAZI_CONFIG_HOME = ($env.USERPROFILE | path join ".config" "yazi")
+$env.GLAZEWM_CONFIG_PATH = ($env.USERPROFILE | path join ".config" "glazewm" "config.yaml")
 
 let style1 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
 let style2 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.color.toml")

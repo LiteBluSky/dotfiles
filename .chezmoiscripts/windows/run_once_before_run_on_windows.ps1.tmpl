@@ -1,4 +1,10 @@
 {{ if eq .chezmoi.os "windows" -}}
+
+setx EDITOR "nvim"
+setx XDG_CONFIG_HOME "$env:USERPROFILE\.config"
+setx YAZI_CONFIG_HOME "$env:USERPROFILE\.config\yazi"
+setx GLAZEWM_CONFIG_PATH "$env:USERPROFILE\.config\glazewm\config.yaml"
+
 # 1. Check if Scoop is installed, install if missing
 if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
     Write-Host "=== Bootstrapping: Installing Scoop ===" -ForegroundColor Cyan
