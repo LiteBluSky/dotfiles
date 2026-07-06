@@ -10,7 +10,7 @@ return {
     insert_mappings = true,
     terminal_mappings = true,
     persist_mode = false, -- Changed to false so it FORCES insert mode every single open
-    shell = 'pwsh -NoExit -Command ". $PROFILE"',
+    shell = "nu",
 
     float_opts = {
       border = "rounded",
