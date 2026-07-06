@@ -23,7 +23,7 @@ $env.EDITOR = "nvim"
 
 # Fallback setup for Starship style configuration if unset
 if not ("STARSHIP_CONFIG" in $env) {
-    $env.STARSHIP_CONFIG = ($env.HOME | path join ".config" "starship-styles" "starship.toml")
+    $env.STARSHIP_CONFIG = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
 }
 
 # Starship initialization sequence (Nushell Native Autoload method)
