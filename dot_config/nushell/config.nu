@@ -92,3 +92,11 @@ def --env ff [] {
   sleep 600ms
   ^fastfetch --logo-padding-top 2 -l $logo_path
 }
+
+$env.PROMPT_INDICATOR_VI_INSERT = { || 
+    (ansi cyan_bold) + "╰────> " + (ansi reset) 
+}
+$env.PROMPT_INDICATOR_VI_NORMAL = { || 
+    (ansi magenta_bold) + "╰─ ─▶ " + (ansi reset) 
+}
+$env.PROMPT_INDICATOR = { || (ansi cyan_bold) + "╰────> " + (ansi reset) }
