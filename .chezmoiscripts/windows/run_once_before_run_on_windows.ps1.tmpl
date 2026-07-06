@@ -10,6 +10,6 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
 if (-not (Get-Command nu -ErrorAction SilentlyContinue)) {
     Write-Host "=== Bootstrapping: Installing Nushell ===" -ForegroundColor Cyan
     scoop install shortcut  # Helpful dependency for scoop links
-    scoop install nushell
+    scoop install nu
 }
 {{ end -}}
