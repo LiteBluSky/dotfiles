@@ -1,9 +1,9 @@
 [data]
-    profile = "home"
+    profile = (env "CHEZMOI_PROFILE" | default "home")
 
     [data.packages]
         # Core Shell & Terminal Architecture
-        nushell         = { windows = "nu",        linux = "nushell" }
+        nushell         = { windows = "nu",             linux = "nushell" }
         wezterm         = { windows = "wezterm",        linux = "wezterm" }
         starship        = { windows = "starship",       linux = "starship" }
         fastfetch       = { windows = "fastfetch",      linux = "fastfetch" }
@@ -33,3 +33,12 @@
 
         # Utilities and Apps
         zen             = { windows = "zen-browser",    linux = "zen" }
+
+        #programs to include on home profile
+        {{- if eq (env "CHEZMOI_PROFILE") "home" }}
+        localsend       = { windows = "localsend",      linux = "" }
+
+        #programs to include on work profile
+        {{- else if eq (env "CHEZMOI_PROFILE") "work" }}
+
+        {{- end }}

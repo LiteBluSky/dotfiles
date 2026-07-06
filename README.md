@@ -8,6 +8,9 @@ This repository automatically provisions your package managers (`scoop`, `winget
 
 Open a standard PowerShell terminal and execute this single command:
 
+> [!IMPORTANT]
+> Make sure to set the env `home|work`.
+
 ```powershell
-winget install twpayne.chezmoi; chezmoi init --apply LiteBluSky
+$env:CHEZMOI_PROFILE="<env>"; winget install twpayne.chezmoi; chezmoi init --apply LiteBluSky
 ```
