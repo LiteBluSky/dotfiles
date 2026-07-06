@@ -1,5 +1,5 @@
 [data]
-    profile = (env "CHEZMOI_PROFILE" | default "home")
+    profile = "{{ env "CHEZMOI_PROFILE" | default "home" }}"
 
     [data.packages]
         # Core Shell & Terminal Architecture
