@@ -45,8 +45,10 @@ config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 {{ if eq .chezmoi.os "windows" }}
+local userprofile = os.getenv("USERPROFILE")
+
 config.default_prog = {
-	"C:/Users/rbuck/scoop/shims/nu.exe",
+    userprofile .. "/scoop/shims/nu.exe",
 }
 {{ else }}
 -- Linux / macOS (System Path)
