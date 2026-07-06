@@ -21,9 +21,20 @@ $env.YAZI_CONFIG_HOME = ($env.USERPROFILE | path join ".config" "yazi")
 $env.XDG_CONFIG_HOME = ($env.USERPROFILE | path join ".config")
 $env.EDITOR = "nvim"
 
-# Fallback setup for Starship style configuration if unset
-if not ("STARSHIP_CONFIG" in $env) {
-    $env.STARSHIP_CONFIG = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
+let style1 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
+let style2 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.color.toml")
+let state_file = ($env.USERPROFILE | path join ".config" "starship-styles" ".starship_current_style")
+
+if ($state_file | path exists) {
+    let saved_style = (open $state_file | str trim)
+    if $saved_style == "style2" {
+        $env.STARSHIP_CONFIG = $style2
+    } else {
+        $env.STARSHIP_CONFIG = $style1
+    }
+} else {
+    # Default fallback if no state file exists yet
+    $env.STARSHIP_CONFIG = $style1
 }
 
 # Starship initialization sequence (Nushell Native Autoload method)

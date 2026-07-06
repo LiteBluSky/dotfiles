@@ -73,13 +73,16 @@ def --env y [...args] {
 def --env tp [] {
     let style1 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
     let style2 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.color.toml")
+    let state_file = ($env.USERPROFILE | path join ".config" "starship-styles" ".starship_current_style")
 
     if $env.STARSHIP_CONFIG == $style1 {
         $env.STARSHIP_CONFIG = $style2
-        print $"(ansi cyan)🚀 Switched to Starship Style 2(ansi reset)"
+        "style2" | save -f $state_file
+        print $"(ansi cyan)🚀 Switched to Starship Style 2 (ansi reset)"
     } else {
         $env.STARSHIP_CONFIG = $style1
-        print $"(ansi magenta)✨ Switched to Starship Style 1(ansi reset)"
+        "style1" | save -f $state_file
+        print $"(ansi magenta)✨ Switched to Starship Style 1 (ansi reset)"
     }
 }
 
