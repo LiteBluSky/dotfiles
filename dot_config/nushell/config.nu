@@ -20,12 +20,11 @@
 $env.config.show_banner = false
 $env.config.shell_integration.osc133 = false
 
-# Fire Fastfetch on shell initialization
 # (We replace the PowerShell %USERPROFILE% syntax with clean string manipulation)
-clear
-let logo_path = ($env.USERPROFILE | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
-sleep 600ms
-^fastfetch --logo-padding-top 2 -l $logo_path
+# clear
+# let logo_path = ($env.USERPROFILE | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
+# sleep 600ms
+# ^fastfetch --logo-padding-top 2 -l $logo_path
 
 # ==========================================
 # VIM MODE & INTERACTIVE COMPLETIONS
@@ -82,4 +81,11 @@ def --env tp [] {
         $env.STARSHIP_CONFIG = $style1
         print $"(ansi magenta)✨ Switched to Starship Style 1(ansi reset)"
     }
+}
+
+def --env ff [] {
+  clear
+  let logo_path = ($env.USERPROFILE | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
+  sleep 600ms
+  ^fastfetch --logo-padding-top 2 -l $logo_path
 }
