@@ -165,4 +165,55 @@ config.keys = {
 	},
 }
 
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+tabline.setup({
+	options = {
+		theme = "Catppuccin Frappe",
+		theme_overrides = {
+			normal_mode = {
+				-- c covers the middle spacer section (tabline_c) and
+				-- standard background empty space of the bar
+				c = { bg = "rgba(48, 52, 70, 0.96)" },
+			},
+			tab = {
+				inactive = { bg = "rgba(48, 52, 70, 0.96)" },
+				inactive_hover = { bg = "rgba(48, 52, 70, 0.96)" },
+				active = { bg = "rgba(48, 52, 70, 0.96)" },
+			},
+		},
+	},
+	sections = {
+		tabline_a = { "mode" },
+		tabline_b = { "workspace" },
+		tabline_c = { " " },
+		tab_active = {
+			{ Background = { Color = "rgba(48, 52, 70, 1)" } },
+			"index",
+			{ "parent", padding = 0 },
+			"/",
+			{ "cwd", padding = { left = 0, right = 1 } },
+			{ "zoomed", padding = 0 },
+		},
+		tab_inactive = {
+			{ Background = { Color = "rgba(48, 52, 70, 1)" } },
+			" [",
+			{
+				"index",
+				padding = 0,
+			},
+			"]",
+			{
+				"process",
+				icons_enabled = false,
+			},
+		},
+		tabline_x = { "ram", "cpu" },
+		tabline_y = { "datetime", "battery" },
+		tabline_z = { "domain" },
+	},
+	extensions = {},
+})
+
+tabline.apply_to_config(config)
+
 return config
