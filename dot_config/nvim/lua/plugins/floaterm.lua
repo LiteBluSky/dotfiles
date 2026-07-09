@@ -2,14 +2,14 @@ return {
   "akinsho/toggleterm.nvim",
   version = "*",
   keys = {
-    -- Change "<leader>ft" to whatever key combination you prefer
-    { "<leader>ft", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle Floating Terminal" },
+    -- Toggles the default/current terminal
+    { "<leader>ft", "<cmd>execute v:count . 'ToggleTerm direction=float'<cr>", desc = "Toggle Terminal" },
   },
   opts = {
     start_in_insert = true,
     insert_mappings = true,
     terminal_mappings = true,
-    persist_mode = false, -- Changed to false so it FORCES insert mode every single open
+    persist_mode = false,
     shell = "nu",
 
     float_opts = {
@@ -25,7 +25,7 @@ return {
   config = function(_, opts)
     require("toggleterm").setup(opts)
 
-    -- 3. Close smoothly from Terminal Mode with Ctrl+O
+    -- Smooth close with Ctrl+o
     vim.keymap.set("t", "<C-o>", [[<C-\><C-n><cmd>ToggleTerm direction=float<cr>]], { desc = "Toggle Terminal" })
   end,
 }
