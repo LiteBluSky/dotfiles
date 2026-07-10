@@ -18,6 +18,13 @@ return {
             },
             { icon = "", key = "s", desc = "[S]ession", section = "session" },
             { icon = "󰬇", key = "L", desc = "[L]azy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            {
+              icon = "󰬅",
+              key = "x",
+              desc = "[X]tras",
+              action = ":LazyExtras",
+              enabled = package.loaded.lazy ~= nil,
+            },
             { icon = "", key = "q", desc = "[Q]uit", action = ":qa" },
           },
           header = [[
