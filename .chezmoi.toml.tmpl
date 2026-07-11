@@ -1,4 +1,4 @@
-{{- $profile := env "CHEZMOI_PROFILE" | default "home" -}}
+{{ $profile := env "CHEZMOI_PROFILE" | default "home" }}
 [data]
     profile = {{ $profile | quote }}
     [data.packages]
@@ -35,10 +35,10 @@
         zen             = { windows = "zen-browser",    linux = "zen",          nixos = "zen" }
 
         # Programs to include on home profile
-        {{- if eq $profile "home" }}
+        {{ if eq $profile "home" }}
         localsend       = { windows = "localsend",      linux = "",             nixos = "localsend" }
         
         # Programs to include on work profile
-        {{- else if eq $profile "work" }}
+        {{ else if eq $profile "work" }}
         # Add your future work apps right here!
-        {{- end }}
+        {{ end }}
