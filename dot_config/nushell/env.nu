@@ -47,6 +47,6 @@ try {
 } catch {
     # Fallback for read-only Nix architectures
     let user_autoload = ($nu.home-path | path join ".local" "share" "nushell" "vendor" "autoload")
-    if not ($user_autoload | path exists) { mkdir -p $user_autoload }
+    if not ($user_autoload | path exists) { mkdir $user_autoload }
     ^starship init nu | save -f ($user_autoload | path join "starship.nu")
 }
