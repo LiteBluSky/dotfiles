@@ -39,9 +39,9 @@
 
         #programs to include on home profile
         {{- if eq $profile "home" }}
-        localsend       = { windows = "localsend",      linux = "",     nixos = "localsend", }
+        localsend       = { windows = "localsend",      linux = "",     nixos = "localsend" }
 
         #programs to include on work profile
-        {{- if eq $profile "work" }}
+        {{- else if eq $profile "work" }}
 
         {{- end }}
