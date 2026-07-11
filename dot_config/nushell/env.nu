@@ -18,13 +18,13 @@
 # them for future reference.
 
 $env.EDITOR = "nvim"
-$env.XDG_CONFIG_HOME = ($env.USERPROFILE | path join ".config")
-$env.YAZI_CONFIG_HOME = ($env.USERPROFILE | path join ".config" "yazi")
-# $env.GLAZEWM_CONFIG_PATH = ($env.USERPROFILE | path join ".config" "glazewm" "config.yaml")
+$env.XDG_CONFIG_HOME = ($nu.home-path | path join ".config")
+$env.YAZI_CONFIG_HOME = ($nu.home-path | path join ".config" "yazi")
 
-let style1 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
-let style2 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.color.toml")
-let state_file = ($env.USERPROFILE | path join ".config" "starship-styles" ".starship_current_style")
+# Cross-platform safe Starship style paths
+let style1 = ($nu.home-path | path join ".config" "starship-styles" "starship.toml")
+let style2 = ($nu.home-path | path join ".config" "starship-styles" "starship.color.toml")
+let state_file = ($nu.home-path | path join ".config" "starship-styles" ".starship_current_style")
 
 if ($state_file | path exists) {
     let saved_style = (open $state_file | str trim)
@@ -38,7 +38,15 @@ if ($state_file | path exists) {
     $env.STARSHIP_CONFIG = $style1
 }
 
-# Starship initialization sequence (Nushell Native Autoload method)
-# This creates a cached loading script inside your Nushell vendor directory
-mkdir ($nu.data-dir | path join "vendor/autoload")
-^starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+# NixOS Safe Vendor Autoload Init
+# Creates directory only if it is writable, otherwise uses home fallback
+let autoload_dir = ($nu.data-dir | path join "vendor/autoload")
+try {
+    if not ($autoload_dir | path exists) { mkdir $autoload_dir }
+    ^starship init nu | save -f ($autoload_dir | path join "starship.nu")
+} catch {
+    # Fallback for read-only Nix architectures
+    let user_autoload = ($nu.home-path | path join ".local" "share" "nushell" "vendor" "autoload")
+    if not ($user_autoload | path exists) { mkdir -p $user_autoload }
+    ^starship init nu | save -f ($user_autoload | path join "starship.nu")
+}
