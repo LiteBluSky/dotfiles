@@ -26,6 +26,11 @@
         resvg           = { windows = "resvg",          linux = "resvg",        nixos = "resvg" }
         imagemagick     = { windows = "imagemagick",    linux = "imagemagick",  nixos = "imagemagick" }
 
+        # nixos only
+        gcc = { windows = "", linux = "gcc", nixos = "gcc" }
+        gnumake = { windows = "", linux = "make", nixos = "gnumake" }
+        tree-sitter = { windows = "", linux = "tree-sitter", nixos = "tree-sitter" }
+
         # Windows-Only Runtimes (Mapped to pass safely or skip on Linux targets)
         vcredist2022    = { windows = "vcredist2022",   linux = "",             nixos = "" }
 
