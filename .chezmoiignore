@@ -1,0 +1,12 @@
+# .chezmoiignore
+
+# 1. Ignore Windows profiles on Linux targets
+{{ if ne .chezmoi.os "windows" }}
+readonly_Documents/PowerShell/
+{{ end }}
+
+# 2. Strict Home Manager Distribution Control
+# Only allow home-manager package module files if the host is explicitly NixOS
+{{ if not (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "nixos")) }}
+.config/home-manager/
+{{ end }}

@@ -1,31 +1,31 @@
+{{- $profile := env "CHEZMOI_PROFILE" | default "home" -}}
 [data]
-    profile = "{{ env "CHEZMOI_PROFILE" | default "home" }}"
-
+    profile = {{ $profile | quote }}
     [data.packages]
         # Core Shell & Terminal Architecture
-        nushell         = { windows = "nu",             linux = "nushell" }
-        wezterm         = { windows = "wezterm",        linux = "wezterm" }
-        starship        = { windows = "starship",       linux = "starship" }
-        fastfetch       = { windows = "fastfetch",      linux = "fastfetch" }
-        lazygit         = { windows = "lazygit",        linux = "lazygit" }
+        nushell         = { windows = "nu",             linux = "nushell",      nixos = "nushell" }
+        wezterm         = { windows = "wezterm",        linux = "wezterm",      nixos = "wezterm" }
+        starship        = { windows = "starship",       linux = "starship",     nixos = "starship" }
+        fastfetch       = { windows = "fastfetch",      linux = "fastfetch",    nixos = "fastfetch" }
+        lazygit         = { windows = "lazygit",        linux = "lazygit",      nixos = "lazygit" }
         # figlet          = { windows = "figlet",         linux = "" }
         # meow            = { windows = "meow",           linux = "" }
 
         # Main CLI Utilities
-        yazi            = { windows = "yazi",           linux = "yazi" }
-        tuxedo          = { windows = "tuxedo",         linux = "tuxedo" }
-        ffmpeg          = { windows = "ffmpeg",         linux = "ffmpeg" }
-        jq              = { windows = "jq",             linux = "jq" }
-        fd              = { windows = "fd",             linux = "fd-find" }
-        ripgrep         = { windows = "ripgrep",        linux = "ripgrep" }
-        fzf             = { windows = "fzf",            linux = "fzf" }
-        zoxide          = { windows = "zoxide",         linux = "zoxide" }
+        yazi            = { windows = "yazi",           linux = "yazi",     nixos = "yazi" }
+        tuxedo          = { windows = "tuxedo",         linux = "tuxedo",   nixos = "" }
+        ffmpeg          = { windows = "ffmpeg",         linux = "ffmpeg",   nixos = "ffmpeg" }
+        jq              = { windows = "jq",             linux = "jq"        nixos = "jq" }
+        fd              = { windows = "fd",             linux = "fd-find",  nixos = "fd" }
+        ripgrep         = { windows = "ripgrep",        linux = "ripgrep",  nixos = "ripgrep" }
+        fzf             = { windows = "fzf",            linux = "fzf",      nixos = "fzf" }
+        zoxide          = { windows = "zoxide",         linux = "zoxide",   nixos = "zoxide" }
 
         # Heavy System Dependencies & Core Libraries
-        sevenzip        = { windows = "7zip",           linux = "p7zip-full" }
-        poppler         = { windows = "poppler",        linux = "poppler-utils" }
-        resvg           = { windows = "resvg",          linux = "resvg" }
-        imagemagick     = { windows = "imagemagick",    linux = "imagemagick" }
+        sevenzip        = { windows = "7zip",           linux = "p7zip-full",       nixos = "p7zip" }
+        poppler         = { windows = "poppler",        linux = "poppler-utils",    nixos = "poppler-utils" }
+        resvg           = { windows = "resvg",          linux = "resvg",            nixos = "resvg" }
+        imagemagick     = { windows = "imagemagick",    linux = "imagemagick",      nixos = "imagemagick" }
         # glazewm         = { windows = "glazewm",        linux = "" }
 
         # Windows-Only Runtimes (Mapped to pass safely or skip on Linux targets)
@@ -38,10 +38,10 @@
         zen             = { windows = "zen-browser",    linux = "zen" }
 
         #programs to include on home profile
-        {{- if eq (env "CHEZMOI_PROFILE") "home" }}
-        localsend       = { windows = "localsend",      linux = "" }
+        {{- if eq $profile "home" }}
+        localsend       = { windows = "localsend",      linux = "",     nixos = "localsend", }
 
         #programs to include on work profile
-        {{- else if eq (env "CHEZMOI_PROFILE") "work" }}
+        {{- if eq $profile "work" }}
 
         {{- end }}
