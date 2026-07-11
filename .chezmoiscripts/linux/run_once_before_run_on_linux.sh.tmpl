@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "linux" -}}
+{{ if not (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "nixos")) }}
 #!/bin/bash
 # .chezmoiscripts/linux/run_once_before_bootstrap.sh
 # Ensures Nushell is present on the Linux host system

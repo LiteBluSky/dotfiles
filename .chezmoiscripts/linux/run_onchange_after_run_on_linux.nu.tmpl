@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "linux" -}}
+{{ if not (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "nixos")) - }}
 # Generated dynamically by Chezmoi for Linux
 print -e $"(ansi green)=== Running Linux Apt Package Layer ===(ansi reset)"
 
