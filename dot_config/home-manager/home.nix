@@ -76,4 +76,13 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      # Seamless cross-platform Nushell auto-start wrapper
+      if [[ $- == *i* ]] && [ "$TERM" != "dumb" ] && [[ ! "$(< /proc/$PPID/comm)" =~ ^nu(shell)?$ ]]; then
+        exec nu
+      fi
+    '';
+  };
 }
