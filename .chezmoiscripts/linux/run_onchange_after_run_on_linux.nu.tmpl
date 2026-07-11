@@ -1,4 +1,4 @@
-{{ if not (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "nixos")) - }}
+{{ if and (eq .chezmoi.os "linux") (ne .chezmoi.osRelease.id "nixos") }}
 # Generated dynamically by Chezmoi for Linux
 print -e $"(ansi green)=== Running Linux Apt Package Layer ===(ansi reset)"
 
@@ -16,4 +16,4 @@ for pkg in $linux_pkgs {
     print $"(ansi yellow)Syncing ($pkg) via system package manager...(ansi reset)"
     sudo apt-get install -y $pkg
 }
-{{ end -}}
+{{ end }}
