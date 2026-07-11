@@ -8,40 +8,37 @@
         starship        = { windows = "starship",       linux = "starship",     nixos = "starship" }
         fastfetch       = { windows = "fastfetch",      linux = "fastfetch",    nixos = "fastfetch" }
         lazygit         = { windows = "lazygit",        linux = "lazygit",      nixos = "lazygit" }
-        # figlet          = { windows = "figlet",         linux = "" }
-        # meow            = { windows = "meow",           linux = "" }
 
         # Main CLI Utilities
-        yazi            = { windows = "yazi",           linux = "yazi",     nixos = "yazi" }
-        tuxedo          = { windows = "tuxedo",         linux = "tuxedo",   nixos = "" }
-        ffmpeg          = { windows = "ffmpeg",         linux = "ffmpeg",   nixos = "ffmpeg" }
-        jq              = { windows = "jq",             linux = "jq"        nixos = "jq" }
-        fd              = { windows = "fd",             linux = "fd-find",  nixos = "fd" }
-        ripgrep         = { windows = "ripgrep",        linux = "ripgrep",  nixos = "ripgrep" }
-        fzf             = { windows = "fzf",            linux = "fzf",      nixos = "fzf" }
-        zoxide          = { windows = "zoxide",         linux = "zoxide",   nixos = "zoxide" }
+        yazi            = { windows = "yazi",           linux = "yazi",         nixos = "yazi" }
+        tuxedo          = { windows = "tuxedo",         linux = "tuxedo",       nixos = "" }
+        ffmpeg          = { windows = "ffmpeg",         linux = "ffmpeg",       nixos = "ffmpeg" }
+        jq              = { windows = "jq",             linux = "jq",           nixos = "jq" }
+        fd              = { windows = "fd",             linux = "fd-find",      nixos = "fd" }
+        ripgrep         = { windows = "ripgrep",        linux = "ripgrep",      nixos = "ripgrep" }
+        fzf             = { windows = "fzf",            linux = "fzf",          nixos = "fzf" }
+        zoxide          = { windows = "zoxide",         linux = "zoxide",       nixos = "zoxide" }
 
         # Heavy System Dependencies & Core Libraries
-        sevenzip        = { windows = "7zip",           linux = "p7zip-full",       nixos = "p7zip" }
-        poppler         = { windows = "poppler",        linux = "poppler-utils",    nixos = "poppler-utils" }
-        resvg           = { windows = "resvg",          linux = "resvg",            nixos = "resvg" }
-        imagemagick     = { windows = "imagemagick",    linux = "imagemagick",      nixos = "imagemagick" }
-        # glazewm         = { windows = "glazewm",        linux = "" }
+        sevenzip        = { windows = "7zip",           linux = "p7zip-full",   nixos = "p7zip" }
+        poppler         = { windows = "poppler",        linux = "poppler-utils", nixos = "poppler-utils" }
+        resvg           = { windows = "resvg",          linux = "resvg",        nixos = "resvg" }
+        imagemagick     = { windows = "imagemagick",    linux = "imagemagick",  nixos = "imagemagick" }
 
         # Windows-Only Runtimes (Mapped to pass safely or skip on Linux targets)
-        vcredist2022    = { windows = "vcredist2022",   linux = "" }
+        vcredist2022    = { windows = "vcredist2022",   linux = "",             nixos = "" }
 
         # Custom Shell Extensions
-        terminal_icons  = { windows = "terminal-icons", linux = "" }
+        terminal_icons  = { windows = "terminal-icons", linux = "",             nixos = "" }
 
         # Utilities and Apps
-        zen             = { windows = "zen-browser",    linux = "zen" }
+        zen             = { windows = "zen-browser",    linux = "zen",          nixos = "zen" }
 
-        #programs to include on home profile
+        # Programs to include on home profile
         {{- if eq $profile "home" }}
-        localsend       = { windows = "localsend",      linux = "",     nixos = "localsend" }
-
-        #programs to include on work profile
+        localsend       = { windows = "localsend",      linux = "",             nixos = "localsend" }
+        
+        # Programs to include on work profile
         {{- else if eq $profile "work" }}
-
+        # Add your future work apps right here!
         {{- end }}
