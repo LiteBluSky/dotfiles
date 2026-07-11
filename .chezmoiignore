@@ -2,7 +2,7 @@
 
 # 1. Ignore Windows profiles on Linux targets
 {{ if ne .chezmoi.os "windows" }}
-readonly_Documents/PowerShell/
+Documents/PowerShell/
 {{ end }}
 
 # 2. Strict Home Manager Distribution Control
