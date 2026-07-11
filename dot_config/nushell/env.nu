@@ -18,13 +18,13 @@
 # them for future reference.
 
 $env.EDITOR = "nvim"
-$env.XDG_CONFIG_HOME = ($nu.home-path | path join ".config")
-$env.YAZI_CONFIG_HOME = ($nu.home-path | path join ".config" "yazi")
+$env.XDG_CONFIG_HOME = ($nu.home-dir | path join ".config")
+$env.YAZI_CONFIG_HOME = ($nu.home-dir | path join ".config" "yazi")
 
 # Cross-platform safe Starship style paths
-let style1 = ($nu.home-path | path join ".config" "starship-styles" "starship.toml")
-let style2 = ($nu.home-path | path join ".config" "starship-styles" "starship.color.toml")
-let state_file = ($nu.home-path | path join ".config" "starship-styles" ".starship_current_style")
+let style1 = ($nu.home-dir | path join ".config" "starship-styles" "starship.toml")
+let style2 = ($nu.home-dir | path join ".config" "starship-styles" "starship.color.toml")
+let state_file = ($nu.home-dir | path join ".config" "starship-styles" ".starship_current_style")
 
 if ($state_file | path exists) {
     let saved_style = (open $state_file | str trim)
@@ -46,7 +46,7 @@ try {
     ^starship init nu | save -f ($autoload_dir | path join "starship.nu")
 } catch {
     # Fallback for read-only Nix architectures
-    let user_autoload = ($nu.home-path | path join ".local" "share" "nushell" "vendor" "autoload")
+    let user_autoload = ($nu.home-dir | path join ".local" "share" "nushell" "vendor" "autoload")
     if not ($user_autoload | path exists) { mkdir $user_autoload }
     ^starship init nu | save -f ($user_autoload | path join "starship.nu")
 }
