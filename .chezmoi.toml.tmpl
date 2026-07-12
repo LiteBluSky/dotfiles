@@ -43,6 +43,7 @@
         # Programs to include on home profile
         {{ if eq $profile "home" }}
         localsend       = { windows = "localsend",      linux = "",             nixos = "localsend" }
+        translucenttb   = { windows = "translucenttb",  linux = "",             nixos = "" }
         
         # Programs to include on work profile
         {{ else if eq $profile "work" }}
