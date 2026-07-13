@@ -202,13 +202,14 @@ tabline.setup({
 		theme_overrides = {
 			normal_mode = {
 				-- c covers the middle spacer section (tabline_c) and
-				-- standard background empty space of the bar
-				c = { bg = "rgba(48, 52, 70, 0.96)" },
+				-- standard background empty space of the bar.
+				-- Tokyo Night Storm base background: #24283b with 96% opacity
+				c = { bg = "rgba(36, 40, 59, 0.96)" },
 			},
 			tab = {
-				inactive = { bg = "rgba(48, 52, 70, 0.96)" },
-				inactive_hover = { bg = "rgba(48, 52, 70, 0.96)" },
-				active = { bg = "rgba(48, 52, 70, 0.96)" },
+				inactive = { bg = "rgba(36, 40, 59, 0.96)" },
+				inactive_hover = { bg = "rgba(47, 54, 79, 0.96)" }, -- Subtle bright slate highlight on hover
+				active = { bg = "rgba(36, 40, 59, 0.96)" },
 			},
 		},
 	},
@@ -217,7 +218,8 @@ tabline.setup({
 		tabline_b = { "workspace" },
 		tabline_c = { " " },
 		tab_active = {
-			{ Background = { Color = "rgba(48, 52, 70, 1)" } },
+			-- Solid dark background block for the active tab (#1f2335)
+			{ Background = { Color = "rgba(31, 35, 53, 1)" } },
 			"index",
 			{ "parent", padding = 0 },
 			"/",
@@ -225,7 +227,8 @@ tabline.setup({
 			{ "zoomed", padding = 0 },
 		},
 		tab_inactive = {
-			{ Background = { Color = "rgba(48, 52, 70, 1)" } },
+			-- Solid slate background block for inactive tabs (#24283b)
+			{ Background = { Color = "rgba(36, 40, 59, 1)" } },
 			{
 				"process",
 				icons_enabled = false,

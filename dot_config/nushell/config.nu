@@ -22,7 +22,7 @@ $env.config.shell_integration.osc133 = false
 
 # (We replace the PowerShell %USERPROFILE% syntax with clean string manipulation)
 # clear
-# let logo_path = ($nu.home-dir | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
+# let logo_path = ($env.USERPROFILE | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
 # sleep 600ms
 # ^fastfetch --logo-padding-top 2 -l $logo_path
 
@@ -71,9 +71,9 @@ def --env y [...args] {
 
 # Starship Toggle Styles Function
 def --env tp [] {
-    let style1 = ($nu.home-dir | path join ".config" "starship-styles" "starship.toml")
-    let style2 = ($nu.home-dir | path join ".config" "starship-styles" "starship.color.toml")
-    let state_file = ($nu.home-dir | path join ".config" "starship-styles" ".starship_current_style")
+    let style1 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
+    let style2 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.color.toml")
+    let state_file = ($env.USERPROFILE | path join ".config" "starship-styles" ".starship_current_style")
 
     if $env.STARSHIP_CONFIG == $style1 {
         $env.STARSHIP_CONFIG = $style2
@@ -88,7 +88,7 @@ def --env tp [] {
 
 def --env ff [] {
   clear
-  let logo_path = ($nu.home-dir | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
+  let logo_path = ($env.USERPROFILE | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
   sleep 600ms
   ^fastfetch --logo-padding-top 2 -l $logo_path
 }

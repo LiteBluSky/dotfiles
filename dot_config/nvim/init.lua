@@ -2,4 +2,4 @@
 require("config.lazy")
 
 -- Comment this line out to get default colorscheme
-vim.cmd.colorscheme("catppuccin-nvim")
+-- vim.cmd.colorscheme("tokyonight-storm")
