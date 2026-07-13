@@ -116,59 +116,41 @@
 -- }
 
 return {
-  "catppuccin/nvim",
-  lazy = true,
-  name = "catppuccin",
-  opts = {
-    lsp_styles = {
-      underlines = {
-        errors = { "undercurl" },
-        hints = { "undercurl" },
-        warnings = { "undercurl" },
-        information = { "undercurl" },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false, -- Colorschemes should load immediately to avoid screen flash
+    priority = 1000, -- Load this before all other plugins
+    opts = {
+      style = "storm", -- Sets the exact match for your WezTerm theme
+      transparent = true, -- Enables transparent background
+      styles = {
+        sidebars = "transparent", -- Makes nvim-tree/neo-tree background transparent
+        floats = "transparent", -- Makes telescope/lsp hover transparent
       },
-    },
-    transparent_background = true,
-    flavour = "frappe",
-    float = { transparent = true },
-    integrations = {
-      yazi = true,
-      aerial = true,
-      alpha = true,
-      cmp = true,
-      dashboard = true,
-      flash = true,
-      fzf = true,
-      grug_far = true,
-      gitsigns = true,
-      headlines = true,
-      illuminate = true,
-      indent_blankline = { enabled = true },
-      leap = true,
-      lsp_trouble = true,
-      mason = true,
-      mini = true,
-      navic = { enabled = true, custom_bg = "lualine" },
-      neotest = true,
-      neotree = true,
-      noice = true,
-      notify = true,
-      snacks = true,
-      telescope = true,
-      treesitter_context = true,
-      which_key = true,
-      bufferline = true,
-    },
-  },
-  specs = {
-    {
-      "akinsho/bufferline.nvim",
-      optional = true,
-      opts = function(_, opts)
-        if (vim.g.colors_name or ""):find("catppuccin-nvim") then
-          opts.highlights = require("catppuccin.special.bufferline").get_theme()
-        end
+      on_colors = function(colors)
+        colors.bg_statusline = colors.none -- Forces lualine's background to be clear
       end,
+      -- on_highlights = function(hl, c)
+      --   hl.CursorLine = { bg = c.bg_highlight }
+      -- end,
+      -- This matches your old custom undercurl settings for LSP diagnostics
+      -- on_highlights = function(hl, c)
+      --   hl.DiagnosticUnderlineError = { undercurl = true, sp = c.error }
+      --   hl.DiagnosticUnderlineHint = { undercurl = true, sp = c.hint }
+      --   hl.DiagnosticUnderlineWarn = { undercurl = true, sp = c.warning }
+      --   hl.DiagnosticUnderlineInfo = { undercurl = true, sp = c.info }
+      -- end,
+    },
+    specs = {
+      {
+        "akinsho/bufferline.nvim",
+        optional = true,
+        -- opts = function(_, opts)
+        --   if (vim.g.colors_name or ""):find("tokyonight") then
+        --     opts.options = opts.options or {}
+        --   end
+        -- end,
+      },
     },
   },
 }
