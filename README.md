@@ -15,7 +15,7 @@ Open a standard PowerShell terminal and execute this single command:
 $env:CHEZMOI_PROFILE="<env>"; winget install twpayne.chezmoi; chezmoi init --apply LiteBluSky
 ```
 
-> [!INFO]
+> [!IMPORTANT]
 > You can also use this if you are already using `Nushell`
 > and if the dotfiles have already been applied
 
