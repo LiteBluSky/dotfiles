@@ -16,13 +16,12 @@
 # You can also pretty-print and page through the documentation for configuration
 # options using:
 #     config nu --doc | nu-highlight | less -R
-
 $env.config.show_banner = false
 $env.config.shell_integration.osc133 = false
 
 # (We replace the PowerShell %USERPROFILE% syntax with clean string manipulation)
 # clear
-# let logo_path = ($env.USERPROFILE | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
+# let logo_path = ($home_dir | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
 # sleep 600ms
 # ^fastfetch --logo-padding-top 2 -l $logo_path
 
@@ -54,6 +53,7 @@ $env.config.keybindings = ($env.config.keybindings? | default []) ++ [
 # FUNCTIONS & ALIASES
 # ==========================================
 
+let home_dir = ($env | get -o HOME | default ($env | get -o USERPROFILE))
 # File explorer shorthand alias
 alias e = explorer .
 
@@ -71,9 +71,9 @@ def --env y [...args] {
 
 # Starship Toggle Styles Function
 def --env tp [] {
-    let style1 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
-    let style2 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.color.toml")
-    let state_file = ($env.USERPROFILE | path join ".config" "starship-styles" ".starship_current_style")
+    let style1 = ($home_dir | path join ".config" "starship-styles" "starship.toml")
+    let style2 = ($home_dir | path join ".config" "starship-styles" "starship.color.toml")
+    let state_file = ($home_dir | path join ".config" "starship-styles" ".starship_current_style")
 
     if $env.STARSHIP_CONFIG == $style1 {
         $env.STARSHIP_CONFIG = $style2
@@ -88,7 +88,7 @@ def --env tp [] {
 
 def --env ff [] {
   clear
-  let logo_path = ($env.USERPROFILE | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
+  let logo_path = ($home_dir | path join ".config" "fastfetch-icons" "massive-fastfetch-logo.txt")
   sleep 600ms
   ^fastfetch --logo-padding-top 2 -l $logo_path
 }
