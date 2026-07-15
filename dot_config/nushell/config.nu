@@ -38,12 +38,12 @@ $env.config.cursor_shape.vi_normal = "underscore"
 # Note: Nushell natively maps Up/Down arrows and 'j'/'k' inside Vi-Command mode 
 # to perform physical history searches automatically! No extra clunky script blocks needed.
 
-# Map 'Ctrl + ,' to accept ghost-text suggestions natively
+# Map 'Ctrl + k' to accept ghost-text suggestions natively
 $env.config.keybindings = ($env.config.keybindings? | default []) ++ [
      {
          name: accept_hint
          modifier: control
-         keycode: char_u2c
+         keycode: char_k
          mode: [vi_insert emacs]
          event: { send: HistoryHintComplete }
      }
