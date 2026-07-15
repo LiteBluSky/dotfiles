@@ -17,14 +17,16 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
-$env.EDITOR = "nvim"
-$env.XDG_CONFIG_HOME = ($env.USERPROFILE | path join ".config")
-$env.YAZI_CONFIG_HOME = ($env.USERPROFILE | path join ".config" "yazi")
-# $env.GLAZEWM_CONFIG_PATH = ($env.USERPROFILE | path join ".config" "glazewm" "config.yaml")
+let home_dir = ($env | get -o HOME | default ($env | get -o USERPROFILE))
 
-let style1 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.toml")
-let style2 = ($env.USERPROFILE | path join ".config" "starship-styles" "starship.color.toml")
-let state_file = ($env.USERPROFILE | path join ".config" "starship-styles" ".starship_current_style")
+$env.EDITOR = "nvim"
+$env.XDG_CONFIG_HOME = ($home_dir | path join ".config")
+$env.YAZI_CONFIG_HOME = ($home_dir | path join ".config" "yazi")
+# $env.GLAZEWM_CONFIG_PATH = ($home_dir | path join ".config" "glazewm" "config.yaml")
+
+let style1 = ($home_dir | path join ".config" "starship-styles" "starship.toml")
+let style2 = ($home_dir | path join ".config" "starship-styles" "starship.color.toml")
+let state_file = ($home_dir | path join ".config" "starship-styles" ".starship_current_style")
 
 if ($state_file | path exists) {
     let saved_style = (open $state_file | str trim)
