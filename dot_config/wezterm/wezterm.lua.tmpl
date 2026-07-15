@@ -19,16 +19,17 @@ end
 
 config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 
+{{ if eq .chezmoi.os "windows" }}
 wezterm.on("gui-startup", function(cmd)
 	local screen = wezterm.gui.screens().active
 
 	-- Change this ratio to adjust your screen margin (0.80 = 80% screen size)
 	local ratio = 0.94
 	local width = screen.width * ratio + 80
-	local height = screen.height * ratio
+	local height = screen.height * ratio - 50
 
 	local x = (screen.width - width) / 2 - 8
-	local y = (screen.height - height) / 2 - 18
+	local y = (screen.height - height) / 2 - 40
 
 	local args = cmd or {}
 	args.position = {
@@ -49,7 +50,16 @@ wezterm.on("window-focus-changed", function(window)
 		window:set_config_overrides(overrides)
 	end
 end)
-
+{{ else }}
+wezterm.on("window-focus-changed", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.allow_win32_input_mode then
+		window:maximize()
+		overrides.allow_win32_input_mode = true
+		window:set_config_overrides(overrides)
+	end
+end)
+{{ end }}
 config.harfbuzz_features = { "calt=1", "cli=1", "lig=1", "ss01=1" }
 
 -- Font
