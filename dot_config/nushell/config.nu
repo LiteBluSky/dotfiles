@@ -18,7 +18,7 @@
 #     config nu --doc | nu-highlight | less -R
 $env.config.show_banner = false
 $env.config.shell_integration.osc133 = false
-$env.PATH = ($env.PATH | split row (char env_sep) | append $'($env.HOME)\.local\bin' | uniq)
+$env.PATH = ($env.PATH | split row (char env_sep) | append (path self | path expand | path join ".local" "bin") | uniq)
 
 # (We replace the PowerShell %USERPROFILE% syntax with clean string manipulation)
 # clear
