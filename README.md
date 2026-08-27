@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="fastfetch-logo.svg" alt="fastfetch logo" width="400">
+  <img src="fastfetch-logo.svg" alt="fastfetch logo" width="600">
 </p>
 
 # Massive's Terminal Dotfiles
