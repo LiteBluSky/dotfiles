@@ -18,7 +18,9 @@
 #     config nu --doc | nu-highlight | less -R
 $env.config.show_banner = false
 $env.config.shell_integration.osc133 = false
-$env.PATH = ($env.PATH | split row (char env_sep) | append $'($env.USERPROFILE)\.local\bin' | uniq)
+
+let home_dir = ($env | get -o HOME | default ($env | get -o USERPROFILE))
+$env.PATH = ($env.PATH | split row (char env_sep) | append ($home_dir | path join ".local" "bin") | uniq)
 
 # (We replace the PowerShell %USERPROFILE% syntax with clean string manipulation)
 # clear
@@ -54,7 +56,6 @@ $env.config.keybindings = ($env.config.keybindings? | default []) ++ [
 # FUNCTIONS & ALIASES
 # ==========================================
 
-let home_dir = ($env | get -o HOME | default ($env | get -o USERPROFILE))
 # File explorer shorthand alias
 alias e = explorer .
 
