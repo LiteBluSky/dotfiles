@@ -6,15 +6,21 @@ This repository automatically provisions your package managers (`scoop`, `winget
 
 ## Fast Installation
 
-> [!IMPORTANT]
-> Make sure to set the env `home|work`.
+Pick the block for your OS and profile (`home` or `work`) below and paste it as-is —
+nothing to edit.
 
 ### Windows
 
-Open a standard PowerShell terminal and execute this single command:
+**Home:**
 
 ```powershell
-$env:CHEZMOI_PROFILE="<env>"; winget install --accept-package-agreements --accept-source-agreements twpayne.chezmoi; $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User"); chezmoi init --apply LiteBluSky
+$env:CHEZMOI_PROFILE="home"; winget install --accept-package-agreements --accept-source-agreements twpayne.chezmoi; $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User"); chezmoi init --apply LiteBluSky
+```
+
+**Work:**
+
+```powershell
+$env:CHEZMOI_PROFILE="work"; winget install --accept-package-agreements --accept-source-agreements twpayne.chezmoi; $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User"); chezmoi init --apply LiteBluSky
 ```
 
 > [!NOTE]
@@ -27,6 +33,10 @@ $env:CHEZMOI_PROFILE="<env>"; winget install --accept-package-agreements --accep
 If you're on `Nushell` and the dotfiles have already been applied, use this instead:
 
 ```nushell
+with-env { CHEZMOI_PROFILE: "home" } { chezmoi init --apply }
+```
+
+```nushell
 with-env { CHEZMOI_PROFILE: "work" } { chezmoi init --apply }
 ```
 
@@ -36,10 +46,16 @@ with-env { CHEZMOI_PROFILE: "work" } { chezmoi init --apply }
 
 ### Linux (Debian/Ubuntu)
 
-Open a terminal and execute this single command:
+**Home:**
 
 ```bash
-CHEZMOI_PROFILE=<env> sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply LiteBluSky
+CHEZMOI_PROFILE=home sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply LiteBluSky
+```
+
+**Work:**
+
+```bash
+CHEZMOI_PROFILE=work sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply LiteBluSky
 ```
 
 This downloads `chezmoi` and immediately runs `init --apply` with it in the same
@@ -48,6 +64,10 @@ repo's own bootstrap scripts install `Nushell` via `apt` and provision the rest 
 the toolchain automatically.
 
 If the dotfiles are already applied and you just want to switch profiles:
+
+```bash
+CHEZMOI_PROFILE=home chezmoi init --apply
+```
 
 ```bash
 CHEZMOI_PROFILE=work chezmoi init --apply
