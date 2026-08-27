@@ -146,14 +146,6 @@ config.keys = {
 		}),
 	},
 	{
-		key = "t",
-		mods = "LEADER",
-		action = wezterm.action.Multiple({
-			wezterm.action.SendString("tuxedo"),
-			wezterm.action.SendKey({ key = "Enter" }),
-		}),
-	},
-	{
 		key = "m",
 		mods = "LEADER",
 		action = wezterm.action.PaneSelect({ mode = "SwapWithActive" }),

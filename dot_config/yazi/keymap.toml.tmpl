@@ -32,11 +32,6 @@ run  = 'shell "wezterm cli split-pane --left --cwd ."'
 desc = "Open WezTerm left (r)"
 
 [[mgr.prepend_keymap]]
-on = [ "t", "t" ]
-run = 'shell tuxedo --block'
-desc = "Open todo.txt (tuxedo)"
-
-[[mgr.prepend_keymap]]
 on = [ "c", "y" ]
 run = [
     '''shell "powershell -NoProfile -Command \"Set-Clipboard -Path (Get-Item '%*')\""''',

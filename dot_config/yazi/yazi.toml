@@ -3,7 +3,6 @@ edit = [
     { run = 'nvim', block = true, desc = "Open in Neovim (Block)" },
     { run = 'nvim "%1"', block = true, desc = "Neovim on current (Block)" },
     { run = 'code .', desc = "Open in VS Code" },
-    { run = 'tuxedo', block = true, desc = "Open todo.txt (tuxedo)" },
 ]
 
 [open]
