@@ -1,8 +1,8 @@
-# Massive's Terminal Dotfiles
-
 <p align="center">
-  <img src="fastfetch-logo.svg" alt="fastfetch logo" width="200">
+  <img src="fastfetch-logo.svg" alt="fastfetch logo" width="400">
 </p>
+
+# Massive's Terminal Dotfiles
 
 Automated terminal environment configuration for Windows 11 and Linux (Debian/Ubuntu) managed by **Chezmoi**.
 
