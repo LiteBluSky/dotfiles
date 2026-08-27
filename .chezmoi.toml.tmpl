@@ -9,8 +9,7 @@
         starship        = { windows = "starship",       linux = "starship",     nixos = "starship" }
         fastfetch       = { windows = "fastfetch",      linux = "fastfetch",    nixos = "fastfetch" }
         lazygit         = { windows = "lazygit",        linux = "lazygit",      nixos = "lazygit" }
-        opencode        = { windows = "opencode",       linux = "",             nixos = "" }
-        obsidian        = { windows = "obsidian",       linux = "",             nixos = "" }
+        # opencode        = { windows = "opencode",       linux = "",             nixos = "" }
 
         # Main CLI Utilities
         yazi            = { windows = "yazi",           linux = "yazi",         nixos = "yazi" }
@@ -45,6 +44,7 @@
         {{ if eq $profile "home" }}
         localsend       = { windows = "localsend",      linux = "",             nixos = "localsend" }
         translucenttb   = { windows = "translucenttb",  linux = "",             nixos = "" }
+        obsidian        = { windows = "obsidian",       linux = "",             nixos = "" }
         
         # Programs to include on work profile
         {{ else if eq $profile "work" }}
