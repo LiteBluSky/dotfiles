@@ -1,5 +1,9 @@
 # Massive's Terminal Dotfiles
 
+<p align="center">
+  <img src="fastfetch-logo.svg" alt="fastfetch logo" width="200">
+</p>
+
 Automated terminal environment configuration for Windows 11 and Linux (Debian/Ubuntu) managed by **Chezmoi**.
 
 This repository automatically provisions your package managers (`scoop`, `winget`, `apt`), installs your complete CLI toolchain, configures environment variables, and deploys your configuration maps seamlessly.
