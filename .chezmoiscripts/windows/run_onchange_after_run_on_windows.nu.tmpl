@@ -15,10 +15,14 @@ let scoop_pkgs = [
 ]
 
 # 3. Clean Loop Execution
+let scoop_root = ($env.SCOOP? | default $"($env.USERPROFILE)\\scoop")
+let scoop_global = ($env.SCOOP_GLOBAL? | default $"($env.ProgramData)\\scoop")
+
 for pkg in $scoop_pkgs {
-    # Changed 'get -i' to 'get -o' to match modern Nushell syntax
-    if (do { ^scoop info $pkg } | complete | get -o stdout | default "" | str contains "Installed: version") {
-        print $"(ansi dark_gray)($pkg) is up to date.(ansi reset)"
+    let installed = (($"($scoop_root)\\apps\\($pkg)" | path exists) or ($"($scoop_global)\\apps\\($pkg)" | path exists))
+    if $installed {
+        print $"(ansi dark_gray)($pkg) is already installed, checking for updates...(ansi reset)"
+        ^scoop update $pkg
     } else {
         print $"(ansi yellow)Installing ($pkg) via Scoop...(ansi reset)"
         ^scoop install $pkg
