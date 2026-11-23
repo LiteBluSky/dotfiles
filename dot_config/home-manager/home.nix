@@ -76,5 +76,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  # Make fonts installed via home.packages (e.g. the Nerd Font) visible to apps
+  fonts.fontconfig.enable = true;
   programs.nushell.enable = true;
 }

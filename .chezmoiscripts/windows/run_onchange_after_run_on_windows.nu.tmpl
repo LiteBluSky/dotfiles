@@ -4,6 +4,7 @@ print -e $"(ansi green)=== Running Scoop Installer Layer ===(ansi reset)"
 
 # 1. Initialize Required Buckets Safely
 do { ^scoop bucket add extras } | complete
+do { ^scoop bucket add nerd-fonts } | complete
 
 # 2. Extract Windows Packages from Master Data Template
 let scoop_pkgs = [

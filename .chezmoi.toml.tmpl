@@ -32,6 +32,10 @@
         gnumake = { windows = "", linux = "make", nixos = "gnumake" }
         tree-sitter = { windows = "", linux = "tree-sitter", nixos = "tree-sitter" }
 
+        # Fonts (Cascadia Mono ships with Windows 11; the Nerd Font adds icon glyphs)
+        cascadia_mono   = { windows = "",               linux = "fonts-cascadia-code", nixos = "cascadia-code" }
+        cascadia_nerd   = { windows = "CascadiaCode-NF-Mono", linux = "",       nixos = "nerd-fonts.caskaydia-cove" }
+
         # Windows-Only Runtimes (Mapped to pass safely or skip on Linux targets)
         vcredist2022    = { windows = "vcredist2022",   linux = "",             nixos = "" }
 
